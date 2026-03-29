@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: Ases Backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myapi_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    server:
+      port: 8080
+      servlet:
+        context-path: /api
+
+jwt:
+  secret: mi_clave_secreta_super_segura_2026
