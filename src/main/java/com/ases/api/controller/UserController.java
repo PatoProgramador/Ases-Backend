@@ -20,4 +20,16 @@ public class UserController {
         UserDTO user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserDTO> getMyProfile() {
+        String email = org.springframework.security.core.context.SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        UserDTO user = userService.getUserByEmail(email);
+
+        return ResponseEntity.ok(user);
+    }
 }
