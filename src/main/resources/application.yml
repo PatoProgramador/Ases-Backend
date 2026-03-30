@@ -12,15 +12,18 @@ spring:
     hibernate:
       ddl-auto: update
       dialect: org.hibernate.dialect.PostgreSQLDialect
-    server:
-      port: 8080
-      servlet:
-        context-path: /api
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: health
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /actuator
 
 jwt:
   secret: mi_clave_secreta_super_segura_2026
