@@ -16,6 +16,11 @@ spring:
       port: 8080
       servlet:
         context-path: /api
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health
 
 jwt:
   secret: mi_clave_secreta_super_segura_2026
