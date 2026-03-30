@@ -1,6 +1,8 @@
 package com.ases.api.controller;
 
 import com.ases.api.dtos.AuthResponse;
+import com.ases.api.dtos.LoginDTO;
+import com.ases.api.dtos.TokenResponse;
 import com.ases.api.dtos.UserRegistrationDTO;
 import com.ases.api.service.AuthService;
 import jakarta.validation.Valid;
@@ -32,5 +34,12 @@ public class AuthController {
 
         AuthResponse authResponse = new AuthResponse(userId);
         return ResponseEntity.created(location).body(authResponse);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<TokenResponse> login(@Valid @RequestBody LoginDTO loginDto) {
+        String token = authService.login(loginDto);
+        TokenResponse tokenResponse = new TokenResponse(token);
+        return ResponseEntity.ok(tokenResponse);
     }
 }
