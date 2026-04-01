@@ -1,13 +1,14 @@
 package com.ases.api.controller;
 
+import com.ases.api.constants.UserRole;
 import com.ases.api.dtos.UserDTO;
+import com.ases.api.dtos.UserUpdateDTO;
 import com.ases.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -31,5 +32,23 @@ public class UserController {
         UserDTO user = userService.getUserByEmail(email);
 
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/role/{role}")
+    public ResponseEntity<List<UserDTO>> getAllUsersByUserRole(@PathVariable UserRole role) {
+        List<UserDTO> users = userService.getAllUsersByUserRole(role);
+        return ResponseEntity.ok(users);
+    }
+
+    @PatchMapping("/{userId}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String userId, @RequestBody UserUpdateDTO userDetails) {
+        UserDTO updatedUser = userService.updateUser(userId, userDetails);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUserLogically(@PathVariable String userId) {
+        userService.deleteUserLogically(userId);
+        return ResponseEntity.noContent().build();
     }
 }

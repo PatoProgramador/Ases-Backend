@@ -1,5 +1,6 @@
 package com.ases.api.dao;
 
+import com.ases.api.constants.UserRole;
 import com.ases.api.contracts.UserDAO;
 import com.ases.api.model.UserModel;
 import com.ases.api.repository.UserRepository;
@@ -16,21 +17,21 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public Optional<UserModel> findById(String id) {
-        return userRepository.findById(id);
+        return userRepository.findByIdAndIsDeletedIsFalse(id);
     }
 
     @Override
     public Optional<UserModel> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmailAndIsDeletedIsFalse(email);
+    }
+
+    @Override
+    public List<UserModel> findByRole(UserRole role) {
+        return userRepository.findByRoleAndIsDeletedIsFalse(role);
     }
 
     @Override
     public String save(UserModel user) {
         return userRepository.save(user).getId();
-    }
-
-    @Override
-    public List<UserModel> findAll() {
-        return userRepository.findAll();
     }
 }

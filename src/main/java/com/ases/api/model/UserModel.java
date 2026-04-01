@@ -28,6 +28,8 @@ public class UserModel {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    private Boolean isDeleted;
+
     public UserModel(UserRegistrationDTO userRegistrationDTO) {
         this.name = userRegistrationDTO.getName();
         this.email = userRegistrationDTO.getEmail();
