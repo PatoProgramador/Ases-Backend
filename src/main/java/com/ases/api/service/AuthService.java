@@ -45,6 +45,7 @@ public class AuthService {
             throw new AlreadyExistsException("User with this email already exists");
         }
         UserModel userModel = new UserModel(userDto);
+        userModel.setIsDeleted(false);
         String encodedPassword = passwordEncoder.encode(userModel.getPassword());
         userModel.setPassword(encodedPassword);
         return userDAO.save(userModel);

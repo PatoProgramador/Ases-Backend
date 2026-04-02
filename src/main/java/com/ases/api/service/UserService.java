@@ -8,7 +8,6 @@ import com.ases.api.dtos.UserUpdateDTO;
 import com.ases.api.model.UserModel;
 import com.ases.api.utils.CustomBeanUtils;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
