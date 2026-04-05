@@ -1,20 +1,20 @@
 spring:
   profiles:
-    active: dev
+    active: ${SPRING_PROFILE:dev}
   application:
     name: Ases Backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/myapi_db
-    username: user
-    password: password
+    url: ${DATABASE_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${DDL_AUTO:update}
       dialect: org.hibernate.dialect.PostgreSQLDialect
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /api
 
@@ -26,4 +26,4 @@ management:
       base-path: /actuator
 
 jwt:
-  secret: mi_clave_secreta_super_segura_2026
+  secret: ${JWT_SECRET}
