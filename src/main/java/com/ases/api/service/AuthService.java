@@ -24,7 +24,7 @@ public class AuthService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @Value("${jwt.secret}")
+    @Value("${JWT_SECRET}")
     private String jwtSecret;
 
     public String login(LoginDTO loginDto) {
