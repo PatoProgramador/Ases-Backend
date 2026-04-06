@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtils {
-    @Value("${jwt.secret}")
+    @Value("${JWT_SECRET}")
     private String jwtSecret;
 
     private SecretKey getSigningKey() {
